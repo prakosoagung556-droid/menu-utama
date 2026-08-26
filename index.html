@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan - Romeo & Juliet</title>
+    <!-- Google Fonts & FontAwesome icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #d4af37;
+            --bg-color: #faf8f5;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        /* Cover Overlay */
+        #cover {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80') center/cover;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            transition: transform 0.8s ease-in-out;
+        }
+
+        .cover-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .btn-open {
+            margin-top: 25px;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: background 0.3s;
+        }
+
+        .btn-open:hover {
+            background-color: #b39023;
+        }
+
+        /* Container Utama */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .hero-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+
+        .section {
+            background: white;
+            padding: 30px 20px;
+            margin: 25px 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        /* Countdown Timer */
+        .timer-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .timer-box {
+            background: var(--bg-color);
+            padding: 10px 15px;
+            border-radius: 8px;
+            min-width: 65px;
+        }
+
+        .timer-box span {
+            display: block;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Event Details */
+        .event-card {
+            border: 1px dashed var(--primary);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        /* Music Toggle Button */
+        .music-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cover Depan -->
+    <div id="cover">
+        <p style="letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem;">The Wedding Of</p>
+        <h1 class="cover-title">Romeo & Juliet</h1>
+        <p>Kepada Yth. Bapak/Ibu/Saudara/i</p>
+        <button class="btn-open" onclick="bukaUndangan()"><i class="fa-solid fa-envelope-open"></i> Buka Undangan</button>
+    </div>
+
+    <!-- Konten Utama -->
+    <div class="container">
+        <header>
+            <p style="letter-spacing: 2px; text-transform: uppercase; color: var(--text-light);">Walimatul 'Ursy</p>
+            <h1 class="hero-title">Romeo & Juliet</h1>
+            <p>Kami mengundang Anda untuk berbagi kebahagiaan di hari pernikahan kami.</p>
+        </header>
+
+        <!-- Pasangan -->
+        <div class="section">
+            <h2 style="font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--primary);">Mempelai</h2>
+            <br>
+            <h3>Romeo Montague, S.T.</h3>
+            <p style="color: var(--text-light); font-size: 0.9rem;">Putra dari Bapak Montague & Ibu Montague</p>
+            <h2 style="font-family: 'Great Vibes', cursive; margin: 10px 0; color: var(--primary);">&</h2>
+            <h3>Juliet Capulet, S.E.</h3>
+            <p style="color: var(--text-light); font-size: 0.9rem;">Putri dari Bapak Capulet & Ibu Capulet</p>
+        </div>
+
+        <!-- Countdown -->
+        <div class="section">
+            <h3>Menuju Hari Bahagia</h3>
+            <div class="timer-container">
+                <div class="timer-box"><span id="days">0</span>Hari</div>
+                <div class="timer-box"><span id="hours">0</span>Jam</div>
+                <div class="timer-box"><span id="minutes">0</span>Menit</div>
+                <div class="timer-box"><span id="seconds">0</span>Detik</div>
+            </div>
+        </div>
+
+        <!-- Detail Acara -->
+        <div class="section">
+            <h2 style="color: var(--primary); margin-bottom: 15px;">Waktu & Lokasi</h2>
+            <div class="event-card">
+                <h3 style="color: var(--primary);">Akad Nikah & Resepsi</h3>
+                <p style="margin: 10px 0;"><i class="fa-regular fa-calendar"></i> Sabtu, 12 Desember 2026</p>
+                <p><i class="fa-regular fa-clock"></i> 09.00 WIB - Selesai</p>
+                <p style="margin-top: 10px;"><i class="fa-solid fa-location-dot"></i> <strong>Gedung Grand Ballroom</strong><br>Jl. Melati No. 123, Jakarta</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Player -->
+    <audio id="bg-music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="music-btn" onclick="toggleMusic()">
+        <i id="music-icon" class="fa-solid fa-music"></i>
+    </div>
+
+    <script>
+        const music = document.getElementById("bg-music");
+        const musicIcon = document.getElementById("music-icon");
+        let isPlaying = false;
+
+        function bukaUndangan() {
+            document.getElementById("cover").style.transform = "translateY(-100%)";
+            toggleMusic();
+        }
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                musicIcon.className = "fa-solid fa-music";
+            } else {
+                music.play();
+                musicIcon.className = "fa-solid fa-pause";
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Hitung Mundur Pernikahan
+        const weddingDate = new Date("Dec 12, 2026 09:00:00").getTime();
+
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));Berikut adalah kode HTML dan CSS sederhana untuk membuat kartu undangan pernikahan digital yang elegan, responsif, dan siap digunakan. Anda cukup menyimpannya ke dalam satu file (contoh: `index.html`) lalu membukanya di browser.
+
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f1ea;
+            color: #4a4a4a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            max-width: 450px;
+            width: 100%;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid #e0dace;
+        }
+        .subtitle {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            color: #8c7b6c;
+            margin-bottom: 15px;
+        }
+        .names {
+            font-family: 'Georgia', serif;
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin: 15px 0;
+            line-height: 1.2;
+        }
+        .ampersand {
+            display: block;
+            font-size: 1.5rem;
+            color: #b8977e;
+            margin: 5px 0;
+            font-style: italic;
+        }
+        .divider {
+            height: 1px;
+            width: 60px;
+            background-color: #b8977e;
+            margin: 25px auto;
+        }
+        .details {
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .date {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #333;
+        }
+        .time, .venue {
+            font-size: 0.95rem;
+            color: #666;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #b8977e;
+            color: white;
+            padding: 12px 28px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #9c7d66;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <p class="subtitle">The Wedding of</p>
+        
+        <h1 class="names">
+            Romeo
+            <span class="ampersand">&</span>
+            Juliet
+        </h1>
+        
+        <div class="divider"></div>
+        
+        <div class="details">
+            <p class="date">Sabtu, 12 Desember 2026</p>
+            <p class="time">Pukul 09.00 WIB - Selesai</p>
+            <br>
+            <p class="venue"><strong>Gedung Serbaguna Utama</strong></p>
+            <p class="venue">Jl. Mawar No. 123, Jakarta</p>
+        </div>
+        
+        <a href="[https://maps.google.com](https://maps.google.com)" target="_blank" class="btn">Petunjuk Lokasi</a>
+    </div>
+
+</body>
+</html>
